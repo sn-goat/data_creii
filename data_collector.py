@@ -15,6 +15,7 @@ class DataColector:
     @property
     def results_linkedin(self):
         return self.__results_linkedin
+
     def __data_collector_facebook(self):
         with sync_playwright() as p:
             browser = p.chromium.launch(headless=False, slow_mo=50)
@@ -81,10 +82,12 @@ class DataColector:
         with open('data_facebook.csv', mode='a', newline='') as csvfile_facebook:
             csv_writer_facebook = csv.writer(csvfile_facebook)
             csv_writer_facebook.writerow(self.__results_facebook)
+
     def __csv_writer_results_linkedin(self):
         with open('data_linkedin.csv', mode='a', newline='') as csvfile_linkedin:
             csv_writer_linkedin = csv.writer(csvfile_linkedin)
             csv_writer_linkedin.writerow(self.__results_linkedin)
+
     def csv_writer_results(self):
         self.__csv_writer_results_facebook()
         self.__csv_writer_results_linkedin()
