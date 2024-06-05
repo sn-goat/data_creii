@@ -4,19 +4,24 @@ from datetime import datetime
 import csv
 
 class DataColector:
-    def __init__(self):
+    def __init__(self) -> None:
         self.__results_facebook = self.__data_collector_facebook()
         self.__results_linkedin = self.__data_collector_linkedin()
+        self.__results_instagram = self.__data_collector_instagram()
 
     @property
-    def results_facebook(self):
+    def results_facebook(self) -> list:
         return self.__results_facebook
 
     @property
-    def results_linkedin(self):
+    def results_linkedin(self) -> list:
         return self.__results_linkedin
 
-    def __data_collector_facebook(self):
+    @property
+    def results_instagram(self) -> list:
+        return self.__results_instagram
+
+    def __data_collector_facebook(self) -> list:
         with sync_playwright() as p:
             browser = p.chromium.launch(headless=False, slow_mo=50)
             page = browser.new_page()
@@ -46,7 +51,7 @@ class DataColector:
 
             return results
 
-    def __data_collector_linkedin(self):
+    def __data_collector_linkedin(self) -> list:
         with sync_playwright() as p:
             browser = p.chromium.launch(headless=False, slow_mo=50)
             page = browser.new_page()
@@ -78,18 +83,48 @@ class DataColector:
 
             return results
 
-    def __csv_writer_results_facebook(self):
-        with open('data_facebook.csv', mode='a', newline='') as csvfile_facebook:
-            csv_writer_facebook = csv.writer(csvfile_facebook)
-            csv_writer_facebook.writerow(self.__results_facebook)
+    def __data_collector_instagram(self) -> list:
+        with sync_playwright() as p:
+            browser = p.chromium.launch(headless=False, slow_mo=50)
+            page = browser.new_page()
+            page.goto("https://www.instagram.com", timeout=60000)
+            page.get_by_label("Phone number, username, or email").fill("creii.mtl")
+            page.get_by_label("Password").fill("Julie2021")
+            page.keyboard.press("Enter")
+            time.sleep(10)
 
-    def __csv_writer_results_linkedin(self):
-        with open('data_linkedin.csv', mode='a', newline='') as csvfile_linkedin:
-            csv_writer_linkedin = csv.writer(csvfile_linkedin)
-            csv_writer_linkedin.writerow(self.__results_linkedin)
+            creii_page = "https://www.instagram.com/accounts/insights/?timeframe=30"
+            page.goto(creii_page)
+            time.sleep(10)
 
-    def csv_writer_results(self):
-        self.__csv_writer_results_facebook()
-        self.__csv_writer_results_linkedin()
+            results = []
+
+            elements = page.query_selector_all("span.x1lliihq.x1plvlek.xryxfnj.x1n2onr6.x193iq5w.xeuugli.x1fj9vlw.x13faqbe.x1vvkbs.x1s928wv.xhkezso.x1gmr53x.x1cpjm7i.x1fgarty.x1943h6x.x1i0vuye.xggs18q.xuv8nkb.x5n08af.xudqn12.xw06pyt.x10wh9bi.x1wdrske.x8viiok.x18hxmgj")
+
+            for el in elements:
+                results.append(int(el.text_content().strip()))
+
+            results.pop(0)
+            results.pop(1)
+
+            results.append(datetime.today().strftime('%Y-%m-%d'))
+
+            print(results)
+
+            return results
+
+
+
+    def __csv_writer_results(self, website: str, results: list) -> None:
+        with open(website, mode='a', newline='') as csvfile:
+            csv_writer = csv.writer(csvfile)
+            csv_writer.writerow(results)
+
+
+    def csv_writer_results(self) -> None:
+        self.__csv_writer_results("data_facebook.csv", self.__results_facebook)
+        self.__csv_writer_results("data_linkedin.csv", self.__results_linkedin)
+        self.__csv_writer_results("data_instagram.csv", self.__results_instagram)
+
 
 
