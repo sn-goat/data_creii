@@ -3,7 +3,7 @@ import time
 from datetime import datetime
 import csv
 
-class DataColector:
+class DataCollector:
     SLEEP:int = 15
     TIMEOUT:int = 90000
     SLOW_MO:int = 50
@@ -26,7 +26,7 @@ class DataColector:
 
     def __data_collector_facebook(self) -> list:
         with sync_playwright() as p:
-            browser = p.chromium.launch(headless=False, slow_mo=self.SLOW_MO)
+            browser = p.chromium.launch(headless=True, slow_mo=self.SLOW_MO)
             page = browser.new_page()
             page.goto("https://www.facebook.com", timeout=self.TIMEOUT)
             page.get_by_placeholder("Email or phone number").fill("nyouvopserge@gmail.com")
@@ -56,7 +56,7 @@ class DataColector:
 
     def __data_collector_linkedin(self) -> list:
         with sync_playwright() as p:
-            browser = p.chromium.launch(headless=False, slow_mo=self.SLOW_MO)
+            browser = p.chromium.launch(headless=True, slow_mo=self.SLOW_MO)
             page = browser.new_page()
             page.goto("https://www.linkedin.com/login", timeout=self.TIMEOUT)
             page.get_by_label("Email or Phone").fill("nyouvopserge@gmail.com")
@@ -88,7 +88,7 @@ class DataColector:
 
     def __data_collector_instagram(self) -> list:
         with sync_playwright() as p:
-            browser = p.chromium.launch(headless=False, slow_mo=self.SLOW_MO)
+            browser = p.chromium.launch(headless=True, slow_mo=self.SLOW_MO)
             page = browser.new_page()
             page.goto("https://www.instagram.com", timeout=self.TIMEOUT)
             page.get_by_label("Phone number, username, or email").fill("creii.mtl")
