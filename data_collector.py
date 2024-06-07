@@ -7,6 +7,7 @@ class DataCollector:
     SLEEP:int = 15
     TIMEOUT:int = 90000
     SLOW_MO:int = 50
+    
     def __init__(self) -> None:
         self.__results_facebook = self.__data_collector_facebook()
         self.__results_linkedin = self.__data_collector_linkedin()
