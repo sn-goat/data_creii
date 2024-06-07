@@ -12,7 +12,7 @@ The Centre de Référence des élèves Issus de l'immigration (CREII) is an orga
 
 To get started with data_creii, follow these steps:
 
-1. **Install the necessary libraries
+2. **Install the necessary libraries**
 2. **Run the script**: Execute `python3 data_creii.py` to start collecting data.
 
 ## Features
