@@ -4,6 +4,9 @@ from datetime import datetime
 import csv
 
 class DataColector:
+    SLEEP:int = 15
+    TIMEOUT:int = 90000
+    SLOW_MO:int = 50
     def __init__(self) -> None:
         self.__results_facebook = self.__data_collector_facebook()
         self.__results_linkedin = self.__data_collector_linkedin()
@@ -23,18 +26,18 @@ class DataColector:
 
     def __data_collector_facebook(self) -> list:
         with sync_playwright() as p:
-            browser = p.chromium.launch(headless=False, slow_mo=50)
+            browser = p.chromium.launch(headless=False, slow_mo=self.SLOW_MO)
             page = browser.new_page()
-            page.goto("https://www.facebook.com", timeout=60000)
+            page.goto("https://www.facebook.com", timeout=self.TIMEOUT)
             page.get_by_placeholder("Email or phone number").fill("nyouvopserge@gmail.com")
             page.get_by_placeholder("Password").fill("pororo2003")
             page.keyboard.press("Enter")
-            time.sleep(10)
+            time.sleep(self.SLEEP)
 
             creii_stats = "https://business.facebook.com/latest/insights/benchmark?asset_id=110865937928716&ad_account_id=120215388370280339&entity_type=FB_PAGE&audience_tab=trends"
 
             page.goto(creii_stats)
-            time.sleep(5)
+            time.sleep(self.SLEEP)
 
             results = []
 
@@ -53,17 +56,17 @@ class DataColector:
 
     def __data_collector_linkedin(self) -> list:
         with sync_playwright() as p:
-            browser = p.chromium.launch(headless=False, slow_mo=50)
+            browser = p.chromium.launch(headless=False, slow_mo=self.SLOW_MO)
             page = browser.new_page()
-            page.goto("https://www.linkedin.com/login", timeout=60000)
+            page.goto("https://www.linkedin.com/login", timeout=self.TIMEOUT)
             page.get_by_label("Email or Phone").fill("nyouvopserge@gmail.com")
             page.get_by_label("Password").fill("pororo2003")
             page.keyboard.press("Enter")
-            time.sleep(10)
+            time.sleep(self.SLEEP)
 
             creii_page = "https://www.linkedin.com/company/94176093/admin/dashboard/"
             page.goto(creii_page)
-            time.sleep(10)
+            time.sleep(self.SLEEP)
 
             results = []
 
@@ -85,17 +88,17 @@ class DataColector:
 
     def __data_collector_instagram(self) -> list:
         with sync_playwright() as p:
-            browser = p.chromium.launch(headless=False, slow_mo=50)
+            browser = p.chromium.launch(headless=False, slow_mo=self.SLOW_MO)
             page = browser.new_page()
-            page.goto("https://www.instagram.com", timeout=60000)
+            page.goto("https://www.instagram.com", timeout=self.TIMEOUT)
             page.get_by_label("Phone number, username, or email").fill("creii.mtl")
             page.get_by_label("Password").fill("Julie2021")
             page.keyboard.press("Enter")
-            time.sleep(10)
+            time.sleep(self.SLEEP)
 
             creii_page = "https://www.instagram.com/accounts/insights/?timeframe=30"
             page.goto(creii_page)
-            time.sleep(10)
+            time.sleep(self.SLEEP)
 
             results = []
 
