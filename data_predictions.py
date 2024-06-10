@@ -68,4 +68,3 @@ def plot_data(range: tuple, title: str, path: str="data_facebook.csv") -> None:
 
     graph.show()
 
-plot_data((0,150), "Instagram Data", "data_instagram.csv")
