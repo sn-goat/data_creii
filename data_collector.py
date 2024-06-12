@@ -120,7 +120,7 @@ class DataCollector:
 
 
     def __csv_writer_results(self, website: str, results: list) -> None:
-        abs_path = "/Users/sergilenyouvop/Desktop/SUMMER_WORK_24/data_creii/"
+        abs_path = "/Users/sergilenyouvop/Desktop/SUMMER_WORK_24/data_creii/data/"
 
         with open( abs_path + website, mode='a', newline='') as csvfile:
             csv_writer = csv.writer(csvfile)

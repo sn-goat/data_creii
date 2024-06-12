@@ -6,6 +6,7 @@ import pickle
 import plotly.express as px
 
 class DataPredictions:
+    MODELS_DIR: list[str] = ["models/", ".pickle"]
     def __init__(self, data_path: str, model_name) -> None:
         self.__data_path = data_path
         self.__model_name = model_name
@@ -35,12 +36,12 @@ class DataPredictions:
                 print(accuracy)
 
                 break
-        with open(self.__model_name + ".pickle", "wb") as f:
+        with open(self.MODELS_DIR[0] + self.__model_name + self.MODELS_DIR[1], "wb") as f:
             pickle.dump(linear, f)
 
         print("\n")
     def __open_model(self):
-        pickle_in = open(self.__model_name + ".pickle", "rb")
+        pickle_in = open(self.MODELS_DIR[0] + self.__model_name + self.MODELS_DIR[1], "rb")
         linear = pickle.load(pickle_in)
         return linear
 

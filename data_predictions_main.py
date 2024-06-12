@@ -11,13 +11,13 @@ def use_model(model: DataPredictions, accuracy: float, data: np.array):
 
 def main():
     data_predictions_facebook = DataPredictions(
-        data_path="data_facebook.csv", model_name="facebookmodel")
+        data_path="data/data_facebook.csv", model_name="facebookmodel")
 
     data_predictions_instagram = DataPredictions(
-        data_path="data_instagram.csv", model_name="instagrammodel")
+        data_path="data/data_instagram.csv", model_name="instagrammodel")
 
     data_predictions_linkedin = DataPredictions(
-        data_path="data_linkedin.csv", model_name="linkedinmodel")
+        data_path="data/data_linkedin.csv", model_name="linkedinmodel")
 
     data_predictions_facebook.plot_data((5, 500), "Data Facebook")
     data_predictions_instagram.plot_data((5, 150), "Data Instagram")
