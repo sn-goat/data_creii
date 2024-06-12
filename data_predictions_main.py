@@ -24,8 +24,8 @@ def main():
     data_predictions_linkedin.plot_data((0, 400), "Data Linkedin")
 
     use_model(data_predictions_facebook, 0.98, [[150, 2000]])
-    use_model(data_predictions_instagram, 0.85, [[2000]])
-    use_model(data_predictions_linkedin, 0.85, [[50, 2000]])
+    use_model(data_predictions_instagram, 0.80, [[2000]])
+    use_model(data_predictions_linkedin, 0.80, [[50, 2000]])
 
 
 
