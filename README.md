@@ -14,7 +14,6 @@ To get started with data_creii, follow these steps:
 
 1. **Install the necessary libraries**: Ex: Execute `pip install playwright` to install Playwright.
 2. **Run the script**: Execute `python3 data_collector_main.py` to start collecting data or `python3 data_predictions_main.py` to see trends and predict data.
-2. **Run the script**: Execute `python3 main.py` to start collecting data or execute `python3 data_predictions_main.py` to see trends and predict data.
 
 ## Features
 
@@ -37,7 +36,7 @@ The following CSV files will be generated or updated in the data directory:
 
 The `data_prediction.py` script is used to predict data trends using linear regression. It utilizes the `sklearn` for building the predictive models. The script also uses `plotly.express` to visualize data and the different slopes of the regression lines.
 
-The models generated for each platform are saved in the following files:
+The models generated for each platform are saved in the following files in the models directory:
 
 * `facebookmodel.pickle`
 * `instagrammodel.pickle`
