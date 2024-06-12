@@ -14,7 +14,7 @@ To get started with data_creii, follow these steps:
 
 1. **Install the necessary libraries**: Ex: Execute `pip install playwright` to install Playwright.
 2. **Run the script**: Execute `python3 data_collector_main.py` to start collecting data or `python3 data_predictions_main.py` to see trends and predict data.
-3. **You can also automate data collection using a crontab file on a Mac.**
+3. **Automate data collection using a crontab file on a Mac.**
 
 ## Features
 
