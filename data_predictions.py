@@ -61,7 +61,7 @@ class DataPredictions:
 
         print("\n")
     def use_model(self, data: np.array) -> None:
-        """"To predict the number based on various varibles.
+        """"To predict the number of followers based on various variables.
            The sata should have this format: [[Followers (28 jours), Interactions]]
            Ex: [[10, 61]] """
 
