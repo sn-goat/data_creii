@@ -1,15 +1,15 @@
 from data_predictions import *
 
-def use_model(model: DataPredictions, accuracy: float, data: np.array):
+def followers_forecasting(model: DataPredictions, accuracy: float, data: np.array) -> None:
     print(model.model_name + ": ")
-    model.train_model(accuracy)
+    model.train_model(accuracy)  # If needed.
     model.test_model()
     print("Data: ", end=" ")
     print(data)
     print(model.use_model(data))
 
 
-def main():
+def main() -> None:
     data_predictions_facebook = DataPredictions(
         data_path="data/data_facebook.csv", model_name="facebookmodel")
 
@@ -23,9 +23,9 @@ def main():
     data_predictions_instagram.plot_data((5, 150), "Data Instagram")
     data_predictions_linkedin.plot_data((0, 400), "Data Linkedin")
 
-    use_model(data_predictions_facebook, 0.98, [[150, 2000]])
-    use_model(data_predictions_instagram, 0.80, [[2000]])
-    use_model(data_predictions_linkedin, 0.80, [[50, 2000]])
+    followers_forecasting(data_predictions_facebook, 0.98, [[150, 2000]])
+    followers_forecasting(data_predictions_instagram, 0.80, [[2000]])
+    followers_forecasting(data_predictions_linkedin, 0.80, [[50, 2000]])
 
 
 

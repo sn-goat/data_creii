@@ -7,6 +7,7 @@ import plotly.express as px
 
 class DataPredictions:
     MODELS_DIR: list[str] = ["models/", ".pickle"]
+
     def __init__(self, data_path: str, model_name) -> None:
         self.__data_path = data_path
         self.__model_name = model_name
