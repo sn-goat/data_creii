@@ -25,7 +25,7 @@ def main() -> None:
 
     followers_forecasting(data_predictions_facebook, 0.98, [[150, 2000]])
     followers_forecasting(data_predictions_instagram, 0.80, [[2000]])
-    followers_forecasting(data_predictions_linkedin, 0.80, [[50, 2000]])
+    followers_forecasting(data_predictions_linkedin, 0.0, [[2000]])
 
 
 
