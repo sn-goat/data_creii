@@ -23,8 +23,8 @@ def main() -> None:
     data_predictions_instagram.plot_data((5, 150), "Data Instagram")
     data_predictions_linkedin.plot_data((0, 400), "Data Linkedin")
 
-    followers_forecasting(data_predictions_facebook, 0.98, [[150, 2000]])
-    followers_forecasting(data_predictions_instagram, 0.80, [[2000]])
+    followers_forecasting(data_predictions_facebook, 0.95, [[150, 2000]])
+    followers_forecasting(data_predictions_instagram, 0.0, [[2000]])
     followers_forecasting(data_predictions_linkedin, 0.0, [[2000]])
 
 

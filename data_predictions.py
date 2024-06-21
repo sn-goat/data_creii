@@ -21,7 +21,7 @@ class DataPredictions:
         Y = df["Followers (Total)"]
         X = df.drop(columns=["Followers (Total)"])
 
-        return train_test_split(X.to_numpy(), Y.to_numpy(), test_size=0.4)
+        return train_test_split(X.to_numpy(), Y.to_numpy(), test_size=0.2)
 
     def train_model(self, best: float) -> None:
         while True:
