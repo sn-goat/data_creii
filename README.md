@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Data Creii is a Python project developed for the Centre de Référence des élèves Issus de l'immigration (CREII). The purpose of this project is to collect data from Facebook, Instagram, and LinkedIn and store it in separate CSV files for further analysis and reference.
+Data Creii is a Python project developed for the Centre de Référence des élèves Issus de l'immigration (CREII). The purpose of this project is to collect data from Facebook and LinkedIn and store it in separate CSV files for further analysis and reference.
 
 ## About CREII
 
@@ -30,7 +30,6 @@ To get started with data_creii, follow these steps:
 The following CSV files will be generated or updated in the data directory:
 
 * `data_facebook.csv`
-* `data_instagram.csv`
 * `data_linkedin.csv`
 
 ## Data Prediction
@@ -40,7 +39,6 @@ The `data_prediction.py` script is used to predict data trends using linear regr
 The models generated for each platform are saved in the following files in the models directory:
 
 * `facebookmodel.pickle`
-* `instagrammodel.pickle`
 * `linkedinmodel.pickle`
 
 ## Acknowledgments
