@@ -26,8 +26,8 @@ class DataCollector:
             browser = p.chromium.launch(headless=True, slow_mo=self.SLOW_MO)
             page = browser.new_page()
             page.goto("https://www.facebook.com", timeout=self.TIMEOUT)
-            page.get_by_placeholder("Email or phone number").fill("nyouvopserge@gmail.com")
-            page.get_by_placeholder("Password").fill("pororo2003")
+            page.get_by_placeholder("Email or phone number").fill("***")
+            page.get_by_placeholder("Password").fill("***")
             page.keyboard.press("Enter")
             time.sleep(self.SLEEP)
 
@@ -56,8 +56,8 @@ class DataCollector:
             browser = p.chromium.launch(headless=True, slow_mo=self.SLOW_MO)
             page = browser.new_page()
             page.goto("https://www.linkedin.com/login", timeout=self.TIMEOUT)
-            page.get_by_label("Email or Phone").fill("nyouvopserge@gmail.com")
-            page.get_by_label("Password").fill("pororo2003")
+            page.get_by_label("Email or Phone").fill("***")
+            page.get_by_label("Password").fill("***")
             page.keyboard.press("Enter")
             time.sleep(self.SLEEP)
 
