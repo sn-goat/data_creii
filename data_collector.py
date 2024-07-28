@@ -11,7 +11,6 @@ class DataCollector:
     def __init__(self) -> None:
         self.__results_facebook = self.__data_collector_facebook()
         self.__results_linkedin = self.__data_collector_linkedin()
-        self.__results_instagram = self.__data_collector_instagram()
 
     @property
     def results_facebook(self) -> list:
@@ -21,9 +20,6 @@ class DataCollector:
     def results_linkedin(self) -> list:
         return self.__results_linkedin
 
-    @property
-    def results_instagram(self) -> list:
-        return self.__results_instagram
 
     def __data_collector_facebook(self) -> list:
         with sync_playwright() as p:
@@ -87,35 +83,6 @@ class DataCollector:
 
             return results
 
-    def __data_collector_instagram(self) -> list:
-        with sync_playwright() as p:
-            browser = p.chromium.launch(headless=True, slow_mo=self.SLOW_MO)
-            page = browser.new_page()
-            page.goto("https://www.instagram.com", timeout=self.TIMEOUT)
-            page.get_by_label("Phone number, username, or email").fill("creii.mtl")
-            page.get_by_label("Password").fill("Julie2021")
-            page.keyboard.press("Enter")
-            time.sleep(self.SLEEP)
-
-            creii_page = "https://www.instagram.com/accounts/insights/?timeframe=30"
-            page.goto(creii_page)
-            time.sleep(self.SLEEP)
-
-            results = []
-
-            elements = page.query_selector_all("span.x1lliihq.x1plvlek.xryxfnj.x1n2onr6.x193iq5w.xeuugli.x1fj9vlw.x13faqbe.x1vvkbs.x1s928wv.xhkezso.x1gmr53x.x1cpjm7i.x1fgarty.x1943h6x.x1i0vuye.xggs18q.xuv8nkb.x5n08af.xudqn12.xw06pyt.x10wh9bi.x1wdrske.x8viiok.x18hxmgj")
-
-            for el in elements:
-                results.append(int(el.text_content().strip()))
-
-            results.pop(0)
-            results.pop(1)
-
-            results.append(datetime.today().strftime('%Y-%m-%d'))
-
-            print(results)
-
-            return results
 
 
 
@@ -130,7 +97,6 @@ class DataCollector:
     def csv_writer_results(self) -> None:
         self.__csv_writer_results("data_facebook.csv", self.__results_facebook)
         self.__csv_writer_results("data_linkedin.csv", self.__results_linkedin)
-        self.__csv_writer_results("data_instagram.csv", self.__results_instagram)
 
 
 
